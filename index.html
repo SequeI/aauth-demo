@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>nono + Aauth demo</title>
+<style>body{font:18px/1.6 system-ui;max-width:760px;margin:64px auto;padding:0 24px;color:#172033}code{background:#eef2f6;padding:3px 6px;border-radius:4px}a{color:#2158bd}</style>
+<h1>nono + Aauth</h1>
+<p>A self-hosted agent identity for signed outbound API requests.</p>
+<p><code>Sandboxed app → nono proxy → signed HTTPS request → API</code></p>
+<p>nono holds the private key on the host, issues a one-hour agent token, and signs allowed requests. The API discovers the public key through the issuer metadata and verifies the token and request.</p>
+<ul><li><a href="https://sequei.github.io/.well-known/aauth-agent.json">Issuer discovery</a></li>
+<li><a href="jwks.json">Public JWKS</a></li>
+<li><a href="https://github.com/SequeI/aauth-demo">Setup and reproducible commands</a></li>
+<li><a href="profiles/whoami.example.json">Example profile</a></li></ul>
+<p>Issuer: <code>https://sequei.github.io</code><br>Agent: <code>aauth:nono-demo@sequei.github.io</code></p>
+<p>Only public files are hosted here. The private key and runtime tokens remain outside this repository.</p>
+</html>

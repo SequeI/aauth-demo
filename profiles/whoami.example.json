@@ -1,0 +1,35 @@
+{
+  "meta": {
+    "name": "nono Aauth public identity demo"
+  },
+  "network": {
+    "credentials": [
+      "aauthapi"
+    ],
+    "aauth_identity": {
+      "key_ref": "/absolute/path/to/your/agent.pem",
+      "agent_id": "aauth:nono-demo@sequei.github.io",
+      "scheme": {
+        "type": "jwt",
+        "issuer": "https://sequei.github.io"
+      }
+    },
+    "custom_credentials": {
+      "aauthapi": {
+        "upstream": "https://whoami.aauth.dev",
+        "aauth": true,
+        "endpoint_policy": {
+          "default": {
+            "decision": "deny"
+          },
+          "allow": [
+            {
+              "method": "GET",
+              "path": "/"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

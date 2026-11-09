@@ -1,0 +1,6 @@
+.local/
+*.pem
+*.key
+*.der
+__pycache__/
+.DS_Store
