@@ -24,6 +24,32 @@ The API verifies the token, then the HTTP request using its bound confirmation k
 
 GitHub Pages project sites live under a repository path. Aauth discovery must be at the issuer origin's root, so the tiny [sequei.github.io](https://github.com/SequeI/sequei.github.io) repository hosts discovery and this repository hosts the demo and JWKS.
 
+## Verified against the public API
+
+Tested at **2026-11-09T11:44:01Z** with a real nono binary and the publicly hosted HTTPS metadata/JWKS.
+No local receiver, TLS bypass, or verifier parser adapter was used.
+
+| Check | Result |
+|---|---|
+| Public discovery and JWKS over trusted HTTPS | HTTP 200 |
+| Unsigned request to `whoami.aauth.dev` | HTTP 401 |
+| JWT-bound signed `GET /` through nono | HTTP 200 |
+| `GET /not-permitted` through nono | HTTP 403, denied locally |
+| `POST /` through nono | HTTP 403, denied locally |
+| Reading the private key from the sandbox | Blocked |
+
+The public API returned:
+
+```json
+{
+  "iss": "https://sequei.github.io",
+  "sub": "aauth:nono-demo@sequei.github.io"
+}
+```
+
+See [verification evidence](evidence/verification.json) and the [sanitized audit events](evidence/audit.json).
+These record one actual run; API availability and authorization remain controlled by the receiving service.
+
 ## Run with the enrolled demo key
 
 Use a nono binary built from the branch implementing `scheme.type: jwt`.

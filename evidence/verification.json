@@ -1,0 +1,29 @@
+{
+  "tested_at_utc": "2026-11-09T11:44:01Z",
+  "issuer": "https://sequei.github.io",
+  "agent_id": "aauth:nono-demo@sequei.github.io",
+  "request_scheme": "jwt",
+  "algorithm": "Ed25519",
+  "key_thumbprint": "tHbPTXR2DvY2JPhVhM6kJMoULcb0VcKuLdwDI012ApY",
+  "resource": "https://whoami.aauth.dev/",
+  "results": {
+    "discovery_https": 200,
+    "jwks_https": 200,
+    "unsigned_resource": 401,
+    "signed_resource": 200,
+    "denied_path": 403,
+    "denied_method": 403,
+    "private_key_read": "blocked"
+  },
+  "audit_events": 4,
+  "receiver_response_fields": [
+    "iss",
+    "sub"
+  ],
+  "notes": "Real public resource and trusted HTTPS; no local receiver, TLS bypass, or verifier parser adapter.",
+  "resource_response": {
+    "iss": "https://sequei.github.io",
+    "sub": "aauth:nono-demo@sequei.github.io"
+  },
+  "nono_version": "0.81.0, local branch with jwt agent-token support"
+}

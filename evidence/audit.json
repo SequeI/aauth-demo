@@ -1,0 +1,66 @@
+{
+  "description": "Sanitized network events from the same successful public verification session. No upstream status is recorded for locally denied requests.",
+  "network_events": [
+    {
+      "mode": "reverse",
+      "decision": "allow",
+      "route_id": "aauthapi",
+      "managed_credential_active": false,
+      "endpoint_policy_action": "allow",
+      "endpoint_policy_rule": "endpoint_policy.allow[GET /]",
+      "target": "aauthapi",
+      "method": "GET",
+      "path": "/",
+      "status": null,
+      "reason": null
+    },
+    {
+      "mode": "reverse",
+      "decision": "allow",
+      "route_id": "aauthapi",
+      "auth_mechanism": "aauth_signature",
+      "auth_outcome": "succeeded",
+      "managed_credential_active": true,
+      "injection_mode": "aauth_signature",
+      "aauth_context": {
+        "agent_id": "aauth:nono-demo@sequei.github.io",
+        "scheme": "jwt",
+        "issuer": "https://sequei.github.io",
+        "key_thumbprint": "tHbPTXR2DvY2JPhVhM6kJMoULcb0VcKuLdwDI012ApY"
+      },
+      "target": "aauthapi",
+      "method": "GET",
+      "path": "/",
+      "status": 200,
+      "reason": null
+    },
+    {
+      "mode": "reverse",
+      "decision": "deny",
+      "route_id": "aauthapi",
+      "managed_credential_active": false,
+      "denial_category": "endpoint_policy",
+      "endpoint_policy_action": "deny",
+      "endpoint_policy_rule": "endpoint_policy.default",
+      "target": "aauthapi",
+      "method": "GET",
+      "path": "/not-permitted",
+      "status": null,
+      "reason": "endpoint denied by endpoint_policy.default: GET /not-permitted on service 'aauthapi'"
+    },
+    {
+      "mode": "reverse",
+      "decision": "deny",
+      "route_id": "aauthapi",
+      "managed_credential_active": false,
+      "denial_category": "endpoint_policy",
+      "endpoint_policy_action": "deny",
+      "endpoint_policy_rule": "endpoint_policy.default",
+      "target": "aauthapi",
+      "method": "POST",
+      "path": "/",
+      "status": null,
+      "reason": "endpoint denied by endpoint_policy.default: POST / on service 'aauthapi'"
+    }
+  ]
+}
